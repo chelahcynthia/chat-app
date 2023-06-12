@@ -7,10 +7,10 @@ import { ContextProvider } from "../context"
 
 import React from 'react'
 
-export default function _app({}) {
+export default function _app({ Component, pageProps}) {
   return (
    <ContextProvider>
-    
+    <Component {...pageProps} />
    </ContextProvider>
   )
 }
