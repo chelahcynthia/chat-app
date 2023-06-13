@@ -1,11 +1,26 @@
-import React, { useContext} from 'react'
-import { Context } from '../context'
-import { useRouter } from 'next/router'
+import React, { useContext } from "react";
+import { Context } from "../context";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 function Auth() {
+  const { username, setUsername, secret, setSecret } = useContext(Context);
   return (
-    <div>index</div>
-  )
+    <div className="background">
+      <div className="auth-container">
+        <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
+          <div className="auth-title">NextJS Chat</div>
+          <div className="input-container">
+            <input
+              placeholder="Email"
+              className="text-input"
+              onChange={(e) => setUser(e.target.value)}
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
 
-export default Auth
+export default Auth;
