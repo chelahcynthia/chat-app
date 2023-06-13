@@ -1,16 +1,17 @@
-import "../styles/auth.css"
-import "../styles/chat.css"
-import "../styles/index.css"
+import "../styles/auth.css";
+import "../styles/chat.css";
+import "../styles/index.css";
 
-import { ContextProvider } from "../context"
+import { ContextProvider } from "../context";
 
+import React from "react";
 
-import React from 'react'
-
-export default function _app({ Component, pageProps}) {
+function _app({ Component, pageProps }) {
   return (
-   <ContextProvider>
-    <Component {...pageProps} />
-   </ContextProvider>
-  )
+    <ContextProvider>
+      <Component {...pageProps} />
+    </ContextProvider>
+  );
 }
+
+export default _app;

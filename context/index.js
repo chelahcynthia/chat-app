@@ -1,10 +1,10 @@
 import React, {useState, createContext} from "react";
 
-export const Context = createContext();
+ export const Context = createContext();
 
-export const ContextProvider = () => {
+  export const ContextProvider = (props) => {
     const [username, setUsername] = useState(" ");
-    // secret to be used in login. if username and secret is present == user is logged in.
+    // secret to be used in login. 
     const [secret, setSecret] = useState(" ");
 
     const value = {
@@ -14,4 +14,5 @@ export const ContextProvider = () => {
         setSecret
     };
     return <Context.Provider  value={value}>{props.children}</Context.Provider>
-}
+};
+
