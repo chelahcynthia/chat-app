@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Context } from "../context";
-import   { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import axios from "axios";
 
-function Auth() {
-  const { username, secret, setUsername, setSecret } = useContext(Context);
- 
-  const router = useRouter()
+const Auth = () => {
+  const { username, setUsername, secret, setSecret } = useContext(Context);
+
+  const router = useRouter();
 
   function onSubmit(e) {
     e.preventDefault();
@@ -14,47 +14,48 @@ function Auth() {
     if (username.length === 1 || secret.length === 1) return;
 
     axios
-    .put(
-      "https://api.chatengine.io/users/",
-      { username, secret },
-      { headers: {"privatekey": " ec8ef8ba-ada3-473a-b446-bd8fd2a5d323"}}
-    )
+      .put(
+        "https://api.chatengine.io/users/",
+        { username, secret },
+        { headers: { "Private-Key": "670e5ce3-5c01-4b4e-914b-a5537d0f499d" } }
+      )
 
-    .then((r) => {
-      router.push("/chat");
-    });
+      .then((r) => {
+        router.push("/chat");
+      });
+     
   }
+
   return (
     <div className="background">
-    <div className="auth-container">
-      <form className="auth-form" onSubmit={(e) => onSubmit(e)}>
-        <div className="auth-title">NextJS Chat</div>
+      <div className="auth-container">
+        <form className="auth-form" onSubmit={(e) => onSubmit(e)}>
+          <div className="auth-title">NextJS Chat</div>
 
-        <div className="input-container">
-          <input
-            placeholder="Email"
-            className="text-input"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
+          <div className="input-container">
+            <input
+              placeholder="Email"
+              className="text-input"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
 
-        <div className="input-container">
-          <input
-            type="password"
-            placeholder="Password"
-            className="text-input"
-            onChange={(e) => setSecret(e.target.value)}
-          />
-        </div>
+          <div className="input-container">
+            <input
+              type="password"
+              placeholder="Password"
+              className="text-input"
+              onChange={(e) => setSecret(e.target.value)}
+            />
+          </div>
 
-        <button type="submit" className="submit-button">
-          Login / Sign Up
-        </button>
-      </form>
+          <button type="submit" className="submit-button">
+            Login / Sign Up
+          </button>
+        </form>
+      </div>
     </div>
-  </div>
-
   );
-};
+}
 
 export default Auth;
