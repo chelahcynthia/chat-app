@@ -9,6 +9,7 @@
     "axios": "^1.4.0",
     "next": "latest",
     "react": "18.2.0",
+    "react-chat-engine-advanced": "^0.1.28",
     "react-dom": "18.2.0"
   }
 }
